@@ -22,7 +22,7 @@ pub enum Command {
 /// Docker commands.
 #[derive(Debug, Subcommand)]
 pub enum Docker {
-    /// Build the docker image.
+    /// Build the docker image. Requires buildkit. See https://docs.docker.com/build/buildkit/#getting-started.
     Build,
 }
 
