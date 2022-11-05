@@ -16,4 +16,4 @@ FROM debian:bullseye-slim
 COPY --from=builder /build/target/release/template-web-service /opt/template-web-service
 
 EXPOSE 8080/tcp
-CMD [ "/opt/template-web-service" ]
+CMD [ "/opt/template-web-service", "spawn" ]
