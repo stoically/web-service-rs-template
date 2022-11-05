@@ -16,3 +16,6 @@ tokio = { version = "1.21.2", features = ["macros", "rt-multi-thread"] }
 tracing = "0.1.37"
 tracing-futures = "0.2.5"
 tracing-subscriber = { version = "0.3.16", features = ["env-filter"] }
+
+[workspace]
+members = ["xtask"]

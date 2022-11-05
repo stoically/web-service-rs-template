@@ -9,6 +9,12 @@ If you spot anti-patterns, bad practices, outdated crates, missing features or a
 
 Run `cargo run -- help` to learn more.
 
+## xtask
+
+Shell tasks following the [xtask pattern](https://github.com/matklad/cargo-xtask).
+
+Run `cargo xtask help` to learn more.
+
 ## Template crates
 
 - CLI: `clap`
@@ -29,4 +35,6 @@ src/
   lib.rs      # WebService struct
   main.rs     # Binary
   state.rs    # Shared application state
+xtask/
+  main.rs     # xtasks
 ```
