@@ -32,7 +32,9 @@ impl WebService {
     pub fn new_with_config(config: Config) -> Self {
         Self::tracing_subscriber(&config);
         Self {
-            state: Arc::new(RwLock::new(InnerState { config })),
+            state: State {
+                inner: Arc::new(RwLock::new(InnerState { config })),
+            },
         }
     }
 
