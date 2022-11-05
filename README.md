@@ -18,7 +18,7 @@ Run `cargo xtask help` to learn more.
 ## Template crates
 
 - CLI: `clap`
-- Webserver: `axum` / `hyper`
+- Webserver / HTTP: `axum` / `hyper`
 - Error handling: `error-stack` / `thiserror`
 - Async runtime: `tokio`
 - Tracing: `tracing` / `tracing-futures` / `tracing-subscriber`
