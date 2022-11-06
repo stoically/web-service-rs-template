@@ -32,6 +32,12 @@ impl Config {
         self
     }
 
+    /// Set the [`DatabaseConfig::uri`].
+    pub fn set_database_uri(mut self, database_uri: String) -> Self {
+        self.database.uri = database_uri;
+        self
+    }
+
     /// Set the [`LogConfig::level_filter`].
     pub fn set_log_level_filter(mut self, log_level_filter: LevelFilter) -> Self {
         self.log.level_filter = log_level_filter;
