@@ -34,7 +34,7 @@ src/
   http.rs     # Webserver / HTTP handling
   lib.rs      # WebService struct
   main.rs     # Binary
-  state.rs    # Shared application state
+  state.rs    # Shared state
 xtask/
   main.rs     # xtasks
 ```
