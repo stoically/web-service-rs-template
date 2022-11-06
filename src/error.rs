@@ -13,6 +13,9 @@ pub enum Error {
     #[error("Hyper")]
     Hyper,
 
+    #[error("Sqlx")]
+    Sqlx,
+
     #[error("AddrParse")]
     AddrParse,
 }

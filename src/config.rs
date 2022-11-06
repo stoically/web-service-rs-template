@@ -15,6 +15,7 @@ use tracing_subscriber::filter::LevelFilter;
 #[serde(default)]
 pub struct Config {
     pub http: HttpConfig,
+    pub database: DatabaseConfig,
     pub log: LogConfig,
 }
 
@@ -49,6 +50,21 @@ impl Default for HttpConfig {
     fn default() -> Self {
         Self {
             addr: ([0, 0, 0, 0], 10100).into(),
+        }
+    }
+}
+
+/// Database configuration.
+#[derive(Debug, Serialize, Deserialize)]
+#[serde(default)]
+pub struct DatabaseConfig {
+    pub uri: String,
+}
+
+impl Default for DatabaseConfig {
+    fn default() -> Self {
+        Self {
+            uri: "postgresql://localhost:5432/template-web-service".to_owned(),
         }
     }
 }

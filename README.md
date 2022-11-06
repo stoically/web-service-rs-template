@@ -19,6 +19,7 @@ Run `cargo xtask help` to learn more.
 
 - CLI: `clap`
 - Webserver / HTTP: `axum` / `hyper`
+- Database / Postgres: `sqlx`
 - Error handling: `error-stack` / `thiserror`
 - Async runtime: `tokio`
 - Tracing: `tracing` / `tracing-futures` / `tracing-subscriber`
@@ -29,6 +30,7 @@ Run `cargo xtask help` to learn more.
 ```shell
 src/
   cli.rs      # CLI parsing and commands
+  database.rs # Database handling
   config.rs   # Configuration handling
   error.rs    # Error types
   http.rs     # Webserver / HTTP handling

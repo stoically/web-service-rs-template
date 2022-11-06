@@ -1,5 +1,6 @@
 use std::{ops::Deref, sync::Arc};
 
+use sqlx::{Pool, Postgres};
 use timed_locks::RwLock;
 
 use crate::Config;
@@ -19,5 +20,8 @@ impl Deref for State {
 }
 
 pub struct InnerState {
+    /// Configuration.
     pub config: Config,
+    /// Database pool.
+    pub pool: Pool<Postgres>,
 }

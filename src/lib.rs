@@ -2,6 +2,7 @@
 
 pub mod cli;
 pub mod config;
+mod database;
 mod error;
 mod http;
 mod state;
@@ -23,19 +24,20 @@ pub struct WebService {
 
 impl WebService {
     /// Create new [`WebService`] with default configuration.
-    pub fn new() -> Self {
+    pub async fn new() -> Result<Self, Error> {
         let config = Config::new();
-        Self::new_with_config(config)
+        Self::new_with_config(config).await
     }
 
     /// Create new [`WebService`] with the given configuration.
-    pub fn new_with_config(config: Config) -> Self {
+    pub async fn new_with_config(config: Config) -> Result<Self, Error> {
         Self::tracing_subscriber(&config);
-        Self {
+        let pool = database::connect(&config).await?;
+        Ok(Self {
             state: State {
-                inner: Arc::new(RwLock::new(InnerState { config })),
+                inner: Arc::new(RwLock::new(InnerState { config, pool })),
             },
-        }
+        })
     }
 
     /// Initialize the tracing subscriber.
