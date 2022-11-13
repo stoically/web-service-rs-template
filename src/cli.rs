@@ -15,6 +15,8 @@ pub struct Args {
 pub enum Command {
     /// Spawn the HTTP server.
     Spawn,
+    /// Write default configuration to `config.yml`.
+    GenerateConfig,
 }
 
 pub fn parse() -> Args {

@@ -1232,6 +1232,25 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4501abdff3ae82a1c1b477a17252eb69cee9e66eb915c1abaa4f44d873df9f09"
 
 [[package]]
+name = "sample-config"
+version = "0.1.0"
+source = "git+https://github.com/FlixCoder/sample-config?rev=8d00c5772f04e1340034bb0d44c81f392633bb71#8d00c5772f04e1340034bb0d44c81f392633bb71"
+dependencies = [
+ "sample-config-macros",
+ "tracing",
+]
+
+[[package]]
+name = "sample-config-macros"
+version = "0.1.0"
+source = "git+https://github.com/FlixCoder/sample-config?rev=8d00c5772f04e1340034bb0d44c81f392633bb71#8d00c5772f04e1340034bb0d44c81f392633bb71"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
 name = "schannel"
 version = "0.1.20"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1591,6 +1610,7 @@ dependencies = [
  "clap",
  "error-stack",
  "hyper",
+ "sample-config",
  "serde",
  "serde_with",
  "sqlx",
