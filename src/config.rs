@@ -29,6 +29,19 @@ impl Config {
         Self::default()
     }
 
+    /// Construct new [`Config`] by reading a yaml file from disk.
+    pub fn new_from_yaml(path: &str) -> Result<Self, Error> {
+        let config = serde_yaml::from_str(
+            &std::fs::read_to_string(path)
+                .into_report()
+                .change_context(Error::Io)?,
+        )
+        .into_report()
+        .change_context(Error::SerdeYaml)?;
+
+        Ok(config)
+    }
+
     /// Write default configuration to `config.yml` in the current directory.
     pub async fn generate() -> Result<(), Error> {
         let config = Self::default().generate_sample_yaml();
