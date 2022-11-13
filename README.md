@@ -7,6 +7,11 @@ If you spot anti-patterns, bad practices, outdated crates, missing features or a
 
 ## CLI
 
+**Features**
+
+- Spawn web service
+- Generate configuration file
+
 Run `cargo run -- help` to learn more.
 
 ## xtask
