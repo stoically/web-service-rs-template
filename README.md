@@ -16,6 +16,10 @@ Run `cargo run -- help` to learn more.
 
 ## xtask
 
+**Features**
+
+- Build docker container
+
 Shell tasks following the [xtask pattern](https://github.com/matklad/cargo-xtask).
 
 Run `cargo xtask help` to learn more.
