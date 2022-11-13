@@ -17,7 +17,8 @@ pub enum Command {
         #[clap(subcommand)]
         command: Config,
     },
-    /// Spawn the HTTP server.
+    /// Spawn the HTTP server with either default configuration or by reading
+    /// `config.yaml` if it exists.
     Spawn,
 }
 
