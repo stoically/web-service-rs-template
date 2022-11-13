@@ -11,7 +11,9 @@ async fn main() -> Result<(), Error> {
             let web_service = WebService::new().await?;
             web_service.spawn().await?;
         }
-        cli::Command::GenerateConfig => Config::generate().await?,
+        cli::Command::Config { command } => match command {
+            cli::Config::GenerateYaml => Config::generate_yaml().await?,
+        },
     }
 
     Ok(())

@@ -1,6 +1,6 @@
 //! CLI.
 
-use clap::Parser;
+use clap::{Parser, Subcommand};
 
 /// Web service.
 #[derive(Debug, Parser)]
@@ -11,12 +11,21 @@ pub struct Args {
 }
 
 /// Commands.
-#[derive(Debug, clap::Subcommand)]
+#[derive(Debug, Subcommand)]
 pub enum Command {
+    Config {
+        #[clap(subcommand)]
+        command: Config,
+    },
     /// Spawn the HTTP server.
     Spawn,
-    /// Write default configuration to `config.yml`.
-    GenerateConfig,
+}
+
+/// Config commands.
+#[derive(Debug, Subcommand)]
+pub enum Config {
+    /// Write default configuration to `config.yaml`.
+    GenerateYaml,
 }
 
 pub fn parse() -> Args {
