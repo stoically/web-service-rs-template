@@ -19,6 +19,12 @@ pub enum Error {
     #[error("Sqlx")]
     Sqlx,
 
+    #[error("SerdeYaml")]
+    SerdeYaml,
+
+    #[error("Io")]
+    Io,
+
     #[error("AddrParse")]
     AddrParse,
 }
