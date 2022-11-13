@@ -52,24 +52,6 @@ impl Config {
 
         Ok(())
     }
-
-    /// Set the [`HttpConfig::addr`].
-    pub fn set_http_addr(mut self, http_addr: SocketAddr) -> Self {
-        self.http.addr = http_addr;
-        self
-    }
-
-    /// Set the [`DatabaseConfig::uri`].
-    pub fn set_database_uri(mut self, database_uri: String) -> Self {
-        self.database.uri = database_uri;
-        self
-    }
-
-    /// Set the [`LogConfig::level_filter`].
-    pub fn set_log_level_filter(mut self, log_level_filter: LevelFilter) -> Self {
-        self.log.level_filter = log_level_filter;
-        self
-    }
 }
 
 /// HTTP configuration.
