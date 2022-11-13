@@ -20,6 +20,7 @@ Run `cargo xtask help` to learn more.
 - CLI: `clap`
 - Webserver / HTTP: `axum` / `hyper`
 - Database / Postgres: `sqlx`
+- Configuration: `sample-config`
 - Error handling: `error-stack` / `thiserror`
 - Async runtime: `tokio`
 - Tracing: `tracing` / `tracing-futures` / `tracing-subscriber`

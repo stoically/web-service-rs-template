@@ -8,6 +8,7 @@ axum = { version = "0.6.0-rc.2", features = ["http2"] }
 clap = { version = "4.0.19", features = ["derive"] }
 error-stack = "0.2.4"
 hyper = "0.14.22"
+sample-config = { git = "https://github.com/FlixCoder/sample-config", rev = "8d00c5772f04e1340034bb0d44c81f392633bb71", features = ["tracing", "yaml"] }
 serde = { version = "1.0.147", features = ["derive"] }
 serde_with = "2.0.1"
 sqlx = { version = "0.6.2", features = ["postgres", "runtime-tokio-native-tls"] }

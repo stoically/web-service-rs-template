@@ -7,6 +7,9 @@
 // <https://github.com/hashintel/hash/discussions/804>.
 #[derive(Debug, thiserror::Error)]
 pub enum Error {
+    #[error("Config")]
+    Config,
+
     #[error("Axum")]
     Axum,
 

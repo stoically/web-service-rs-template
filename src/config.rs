@@ -2,17 +2,20 @@
 
 use std::net::SocketAddr;
 
+use error_stack::{IntoReport, Result, ResultExt};
+use sample_config::SampleConfig;
 use serde::{Deserialize, Serialize};
 use serde_with::{serde_as, DisplayFromStr};
 use tracing_subscriber::filter::LevelFilter;
+
+use crate::Error;
 
 /// Configuration.
 ///
 /// We don't use the `config` crate because of type safety. See <https://github.com/mehcode/config-rs/issues/365>.
 //
 // TODO: Generate the setter methods via macro.
-#[derive(Debug, Default, Serialize, Deserialize)]
-#[serde(default)]
+#[derive(Debug, Default, Deserialize, Serialize, SampleConfig)]
 pub struct Config {
     pub http: HttpConfig,
     pub database: DatabaseConfig,
@@ -24,6 +27,17 @@ impl Config {
     #[tracing::instrument]
     pub fn new() -> Self {
         Self::default()
+    }
+
+    /// Write default configuration to `config.yml` in the current directory.
+    pub async fn generate() -> Result<(), Error> {
+        let config = Self::default().generate_sample_yaml();
+        tokio::fs::write("./config.yml", config)
+            .await
+            .into_report()
+            .change_context(Error::Config)?;
+
+        Ok(())
     }
 
     /// Set the [`HttpConfig::addr`].
@@ -46,8 +60,7 @@ impl Config {
 }
 
 /// HTTP configuration.
-#[derive(Debug, Serialize, Deserialize)]
-#[serde(default)]
+#[derive(Debug, Deserialize, Serialize, SampleConfig)]
 pub struct HttpConfig {
     pub addr: SocketAddr,
 }
@@ -61,8 +74,7 @@ impl Default for HttpConfig {
 }
 
 /// Database configuration.
-#[derive(Debug, Serialize, Deserialize)]
-#[serde(default)]
+#[derive(Debug, Deserialize, Serialize, SampleConfig)]
 pub struct DatabaseConfig {
     pub uri: String,
 }
@@ -77,8 +89,7 @@ impl Default for DatabaseConfig {
 
 /// Logging configuration.
 #[serde_as]
-#[derive(Debug, Serialize, Deserialize)]
-#[serde(default)]
+#[derive(Debug, Deserialize, Serialize, SampleConfig)]
 pub struct LogConfig {
     #[serde_as(as = "DisplayFromStr")]
     pub level_filter: LevelFilter,
