@@ -42,7 +42,7 @@ impl Config {
         Ok(config)
     }
 
-    /// Write default configuration to `config.yml` in the current directory.
+    /// Write default configuration to `config.yaml` in the current directory.
     pub async fn generate_yaml() -> Result<(), Error> {
         let config = Self::default().generate_sample_yaml();
         tokio::fs::write("./config.yaml", config)
