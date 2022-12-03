@@ -5,7 +5,7 @@ edition = "2021"
 license = "MIT"
 
 [dependencies]
-axum = { version = "0.6.0-rc.2", features = ["http2"] }
+axum = { version = "0.6.1", features = ["http2"] }
 clap = { version = "4.0.19", features = ["derive"] }
 error-stack = "0.2.4"
 hyper = "0.14.22"

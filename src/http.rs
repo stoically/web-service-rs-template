@@ -6,8 +6,8 @@ use crate::state::State;
 
 /// Main axum router.
 #[tracing::instrument(skip(state))]
-pub fn app(state: State) -> Router<State> {
-    Router::with_state(state).route("/", get(handler))
+pub fn app(state: State) -> Router<()> {
+    Router::new().route("/", get(handler)).with_state(state)
 }
 
 async fn handler(_state: axum::extract::State<State>) -> impl IntoResponse {

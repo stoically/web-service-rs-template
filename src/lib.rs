@@ -10,12 +10,15 @@ mod state;
 use std::sync::Arc;
 
 use error_stack::{IntoReport, Result, ResultExt};
-use state::{InnerState, State};
 use timed_locks::RwLock;
 use tracing::info;
 use tracing_subscriber::EnvFilter;
 
-pub use crate::{config::Config, error::Error, http::app};
+pub use crate::{
+    config::Config,
+    error::Error,
+    state::{InnerState, State},
+};
 
 /// Web service.
 pub struct WebService {
@@ -61,9 +64,10 @@ impl WebService {
     #[tracing::instrument(skip(self))]
     pub async fn spawn(&self) -> Result<(), Error> {
         let addr = self.state.read().await.config.http.addr;
+
         info!("Listening on {}", addr);
         axum::Server::bind(&addr)
-            .serve(app(self.state.clone()).into_make_service())
+            .serve(http::app(self.state.clone()).into_make_service())
             .await
             .into_report()
             .change_context(Error::Hyper)?;
