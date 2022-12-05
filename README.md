@@ -1,7 +1,7 @@
 # Rust Template: Web service in 2022
 
 Simple web service template that tries to follow best practices in terms of cli, crates,
-patterns, configuration and file structure.
+patterns, configuration and file structure. The template wants to be as lean as possible, meaning that it does only the most basic wiring up of popular crates together with a container building xtask – something that tends to eat the first few hours of that New Shiny Side Project.
 
 If you spot anti-patterns, bad practices, outdated crates, missing features or anything really: feel free to open an issue.
 
