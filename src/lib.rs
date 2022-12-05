@@ -35,6 +35,8 @@ impl WebService {
     /// Create new [`WebService`] with the given configuration.
     pub async fn new_with_config(config: Config) -> Result<Self, Error> {
         Self::tracing_subscriber(&config);
+        info!("Starting.");
+        info!("Connecting to database.");
         let pool = database::connect(&config).await?;
         Ok(Self {
             state: State {

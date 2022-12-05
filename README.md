@@ -24,6 +24,12 @@ Shell tasks following the [xtask pattern](https://github.com/matklad/cargo-xtask
 
 Run `cargo xtask help` to learn more.
 
+## Quick start
+
+1. `cargo run -- config generate` and adjust the `database.uri` in the generated `config.yaml`
+2. `cargo run -- spawn`
+3. Visit `http://localhost:10100`
+
 ## Template crates
 
 - CLI: `clap`
