@@ -77,7 +77,7 @@ pub struct DatabaseConfig {
 impl Default for DatabaseConfig {
     fn default() -> Self {
         Self {
-            uri: "postgresql://localhost:5432/template-web-service".to_owned(),
+            uri: "postgresql://postgres:password@localhost:5432/template-web-service".to_owned(),
         }
     }
 }
